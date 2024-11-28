@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Sales Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Video Game Global Sales Predictor</h1>
+        <form method="POST" action="/predict">
+            <label for="platform">Platform:</label>
+            <input type="text" id="platform" name="platform" placeholder="Enter platform (e.g., PS4)" required>
+
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" placeholder="Enter genre (e.g., Action)" required>
+
+            <label for="na_sales">NA Sales:</label>
+            <input type="number" id="na_sales" name="na_sales" step="0.01" placeholder="Enter NA sales" required>
+
+            <label for="eu_sales">EU Sales:</label>
+            <input type="number" id="eu_sales" name="eu_sales" step="0.01" placeholder="Enter EU sales" required>
+
+            <label for="jp_sales">JP Sales:</label>
+            <input type="number" id="jp_sales" name="jp_sales" step="0.01" placeholder="Enter JP sales" required>
+
+            <label for="other_sales">Other Sales:</label>
+            <input type="number" id="other_sales" name="other_sales" step="0.01" placeholder="Enter other region sales" required>
+
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
